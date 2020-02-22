@@ -59,7 +59,8 @@ jobs:
           docker_password: ${{ secrets.DOCKER_PASSWORD }}
 ```
 
-Create a dummy issue like [this one](../../issues/1), and add a comment to it like this:
+Make sure to add the appropriate secrets to your repository.
+Next, create a dummy issue like [this one](../../issues/1), and add a comment to it like this:
 
 ```
 /release patch
@@ -69,3 +70,13 @@ They get copied into the GitHub release.
 ```
 
 The bump level can be "major", "minor", or "patch".
+
+### Configuration
+
+- `token` (required): GitHub API token.
+  Using the default `${{ secrets.GITHUB_TOKEN }}` is fine, but keep in mind that it does not have the ability to kick off other GitHub Actions.
+  So if you have actions that listen for new commits, tags, or releases, you should probably use your own personal access token.
+- `docker_username` (required): Your Docker Hub username.
+- `docker_password` (required): Your Docker Hub password.
+- `trigger`: The trigger to kick off a release, which defaults to `/release`.
+  If you change it, you should also make sure to update or remove the `if` condition in your workflow file.
