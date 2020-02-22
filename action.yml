@@ -17,7 +17,7 @@ inputs:
     default: /release
 runs:
   using: docker
-  image: docker://degraafc/docker-action-releaser:0
+  image: docker://degraafc/docker-action-releaser:0.1.0
 branding:
   icon: tag
   color: red
