@@ -1,13 +1,11 @@
-from typing import Dict, Iterable, Literal, Optional, Tuple
+from typing import Dict, Iterable, Optional, Tuple
 
 class Image:
     def tag(self, repo: str, *, tag: str) -> bool: ...
 
 class Images:
     def build(self, *, path: str) -> Tuple[Image, Iterable[Dict[str, str]]]: ...
-    def push(
-        self, repo: str, *, tag: str, stream: Literal[True], decode: Literal[True]
-    ) -> Iterable[Dict[str, object]]: ...
+    def push(self, repo: str, *, tag: str) -> str: ...
 
 class Docker:
     images: Images

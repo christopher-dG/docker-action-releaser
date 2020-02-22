@@ -106,10 +106,10 @@ def main() -> None:
         print("Logging into Docker Hub")
         docker_client.login(DOCKER_USERNAME, DOCKER_PASSWORD)
         print("Building image")
-        image, build_logs = docker_client.images.build(path=build_dir)
-        for build_log in build_logs:
-            if "stream" in build_log:
-                line = build_log["stream"].strip()
+        image, logs = docker_client.images.build(path=build_dir)
+        for log in logs:
+            if "stream" in log:
+                line = log["stream"].strip()
                 if line:
                     print(line)
         print("Pushing Docker images")
@@ -121,11 +121,7 @@ def main() -> None:
         ]
         for tag in docker_tags:
             image.tag(docker_repo, tag=tag)
-            push_logs = docker_client.images.push(
-                docker_repo, tag=tag, stream=True, decode=True
-            )
-            for push_log in push_logs:
-                print(push_log)
+            docker_client.images.push(docker_repo, tag=tag)
 
         # Update action.yml
         print("Committing action.yml changes")
