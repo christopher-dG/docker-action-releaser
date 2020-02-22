@@ -2,7 +2,7 @@
 
 Docker Action Releaser keeps your GitHub Action's Docker tags in sync with its Git tags.
 
-Best practices dictate that you should tag releases of your project according to [SemVer](https://semver.org)
+Best practices dictate that you should tag releases of your project according to [SemVer](https://semver.org).
 That's not very difficult, but there are a few moving parts to container actions that you want to keep in sync.
 They are:
 
@@ -13,7 +13,7 @@ They are:
 - The Docker image version referenced in `action.yml` (`X.Y.Z`)
 
 This is the ideal situation for your users because it allows them to choose how they receive updates.
-They can choose to lock themselves to specific patch release by using `your/action@v1.2.3`, receive patch updates with `your/action@v1.2`, or receive minor version bumps with `your/action@v1`, or even disregard SemVer altogether and stay on the most recent release with `your/action@latest`.
+They can choose to lock themselves to specific patch release by using `your/action@v1.2.3`, receive patch updates with `your/action@v1.2`, receive minor version bumps with `your/action@v1`, or even disregard SemVer altogether and stay on the most recent release with `your/action@latest`.
 
 But maintaining this setup manually is not fun.
 On every release, you'll need to:
