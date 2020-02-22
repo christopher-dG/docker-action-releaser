@@ -1,0 +1,16 @@
+from typing import Dict, Iterable, Literal, Optional, Tuple
+
+class Image:
+    def tag(self, repo: str, *, tag: str) -> bool: ...
+
+class Images:
+    def build(self, *, path: str) -> Tuple[Image, Iterable[Dict[str, str]]]: ...
+    def push(
+        self, repo: str, *, tag: str, stream: Literal[True], decode: Literal[True]
+    ) -> Iterable[Dict[str, object]]: ...
+
+class Docker:
+    images: Images
+    def login(self, username: str, password: str) -> Dict[str, Optional[str]]: ...
+
+def from_env() -> Docker: ...

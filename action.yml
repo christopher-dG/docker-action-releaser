@@ -1,0 +1,23 @@
+name: Docker Action Releaser
+author: Chris de Graaf
+description: Keep your GitHub Action's Docker tags in sync with its Git tags
+inputs:
+  token:
+    description: GitHub API token
+    required: true
+  docker_username:
+    description: Docker Hub username
+    required: true
+  docker_password:
+    description: Docker Hub password
+    required: true
+  trigger:
+    description: Trigger comment
+    required: false
+    default: /release
+runs:
+  using: docker
+  image: docker://degraafc/docker-action-releaser:0
+branding:
+  icon: tag
+  color: red
