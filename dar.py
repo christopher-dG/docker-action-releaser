@@ -146,7 +146,8 @@ def main() -> None:
             except UnknownObjectException:
                 pass
             else:
-                ref.delete()
+                if ref.ref:
+                    ref.delete()
             gh_repo.create_git_ref(f"refs/tags/{tag}", commit_sha)
 
         # React to the issue comment
